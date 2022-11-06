@@ -1,0 +1,9 @@
+THE MAIN PROBLEM IS THAT THE SIZE OF THE GRAPH IS SOMETIMES SO LARGE THAT IT MIGHT NOT FIT IN THE THE GPU AS the size of the GPU is not that much large.
+So to solve this problem we are partitioning the graph in such a way that the similar nodes(in terms of neighbour) are send for computation parts by parts.
+To achive this we are using metis whic forms cluster of similar nodes.
+We are using graph challenge dataset which are in the form of  edge list.
+So first we are converting edge list form to CSR matrix. Code for the same is present in CSR.py file.
+After that we are converting CSR matrix to the form where each node contains its corresponding neighbours which is given to input for metis,and this file is present in
+part_csr.c
+After this we are giving input to the metis in terms of arguments eg. how many partitions we want etc.
+THere is a file name called partitions.c which arrange all the partitions in sorted order,eg.nodes present in partitions 0 comes first and then partitions 1,....2.3..
